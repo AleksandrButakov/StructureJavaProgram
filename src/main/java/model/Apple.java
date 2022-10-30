@@ -1,20 +1,20 @@
 package model;
 
-import model.constants.Colour;
+import static model.constants.Colour.RED;
+import static model.constants.Discount.DISCOUNT;
 
 public class Apple extends Food {
 
-    private String colour;
+    public Apple(int amount, double price, String colour) {
 
-    /*
-        public Meat(int amount, double price) {
-        super(amount, price, false);
-        }
-     */
-
-    public Apple(int amount, double price, String colour){
         super(amount, price, true);
         this.colour = colour;
+
+        if (colour.equals(RED)) {
+            this.discount = DISCOUNT;
+        } else {
+            this.discount = 0;
+        }
 
     }
 

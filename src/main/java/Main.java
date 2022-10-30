@@ -2,56 +2,27 @@ import model.Apple;
 import model.Food;
 import model.Meat;
 
-import static model.constants.Colour.GREEN;
-import static model.constants.Colour.RED;
+import service.ShoppingCart;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        /*
-        Код для функциональности
-        Отдельно от пакетов создай класс Main с методом main.
-        В методе main реализуй следующую логику:
+        Apple appleRed = new Apple(10, 50, "red");
+        Apple appleGreen = new Apple(8, 60, "green");
+        Meat meat = new Meat(5, 100);
 
-        Инициализируй данные. Для этого создай объекты:
-        Мясо в количестве 5 кг по цене 100 рублей за кг;
-        Яблоки красные в количестве 10 кг по цене 50 рублей;
-        Яблоки зелёные в количестве 8 кг по цене 60 рублей.
+        Food[] foods = new Food[3];
+        foods[0] = appleRed;
+        foods[1] = appleGreen;
+        foods[2] = meat;
 
-        Создай массив продуктов из этих элементов и проинициализируй корзину с помощью созданного массива.
-        Посчитай и выведи на экран значения для созданной корзины:
-        общую сумму товаров без скидки,
-        общую сумму товаров со скидкой,
-        сумму всех вегетарианских продуктов без скидки.
-        Все переменные класса должны быть недоступны извне, если не указано иное. Доступ к ним реализуй
-        через известные тебе методы: создавай только те, которые действительно нужны для реализации описанной
-        функциональности.
-         */
+        ShoppingCart cart = new ShoppingCart(foods);
 
-        /*
-        Transport boat = new Boat(false);
-        System.out.println("Является ли транспорт наземным: " + boat.isGround());
-
-        GroundTransport motorcycle = new Motorcycle(true, 2);
-        System.out.println("Является ли транспорт наземным: " + motorcycle.isGround());
-        System.out.println("Количество колёс: " + motorcycle.getWheelsCount());
-
-        GroundTransport car = new Car(true, 4);
-        System.out.println("Является ли транспорт наземным: " + car.isGround());
-        System.out.println("Количество колёс: " + car.getWheelsCount());
-
-        Car sportcar = new Sportcar(true, 4);
-        System.out.println("Является ли транспорт наземным: " + sportcar.isGround());
-        System.out.println("Количество колёс: " + sportcar.getWheelsCount());
-         */
-
-        Food meat = new Meat(5, 100);
-        Food appleRed = new Apple(10, 50, RED);
-        Food appleGreen = new Apple(8, 60, GREEN);
-
-
-
+        System.out.println("Общая сумма товаров со скидкой равна: " + cart.sumWithoutDiscount());
+        System.out.println("Общая сумма товаров без скидки равна: " + cart.sumWithDiscount());
+        System.out.println("Сумма всех вегетарианских продуктов без скидки равна: " +
+                cart.sumVegetarianProductsWithoutDiscount());
 
     }
 
