@@ -1,16 +1,12 @@
 package model;
 
-public abstract class Food {
+public abstract class Food{
 
     public int discount;
     public String colour;
     protected int amount;
     protected double price;
     protected boolean isVegetarian;
-
-    public int getDiscount() {
-        return discount;
-    }
 
     public int getAmount() {
         return amount;

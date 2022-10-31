@@ -2,12 +2,12 @@ package service;
 
 import model.Food;
 
-import static model.constants.Colour.RED;
 import static model.constants.Discount.DISCOUNT;
+import static model.constants.Discount.DISCOUNT_ZERO;
 
 public class ShoppingCart {
 
-    Food[] foods;
+    private Food[] foods;
 
     public ShoppingCart(Food[] foods) {
         this.foods = foods;
@@ -18,9 +18,9 @@ public class ShoppingCart {
     public double sumWithoutDiscount() {
         double sumWithoutDiscount = 0;
 
-        for (int i = 0; i < foods.length; i++) {
-            if (foods[i].discount == 0) {
-                sumWithoutDiscount += (foods[i].getPrice()) * (foods[i].getAmount());
+        for (Food food: foods) {
+            if (food.discount == DISCOUNT_ZERO) {
+                sumWithoutDiscount += (food.getPrice()) * (food.getAmount());
             }
         }
         return sumWithoutDiscount;      // сумму покупки без скидки;
@@ -30,9 +30,9 @@ public class ShoppingCart {
     public double sumWithDiscount() {
         double sumWithDiscount = 0;
 
-        for (int i = 0; i < foods.length; i++) {
-            if (foods[i].discount == DISCOUNT) {
-                sumWithDiscount += (foods[i].getPrice()) * (foods[i].getAmount());
+        for (Food food: foods) {
+            if (food.discount == DISCOUNT) {
+                sumWithDiscount += (food.getPrice()) * (food.getAmount());
             }
         }
         return sumWithDiscount;     // сумму покупки без скидки;
@@ -42,9 +42,9 @@ public class ShoppingCart {
     public double sumVegetarianProductsWithoutDiscount() {
         double sumVegetarianProductsWithoutDiscount = 0;
 
-        for (int i = 0; i < foods.length; i++) {
-            if (foods[i].isVegetarian() == true && foods[i].discount == 0) {
-                sumVegetarianProductsWithoutDiscount += (foods[i].getPrice()) * (foods[i].getAmount());
+        for (Food food: foods) {
+            if (food.isVegetarian() == true && food.discount == DISCOUNT_ZERO) {
+                sumVegetarianProductsWithoutDiscount += (food.getPrice()) * (food.getAmount());
             }
         }
         return sumVegetarianProductsWithoutDiscount;    // сумму покупки без скидки;
